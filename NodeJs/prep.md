@@ -1,4 +1,4 @@
-# 🚀 Node.js Deep Internals: The Ultimate Architecture Guide
+# 🚀 Node.js Deep Internals: The Ultimate Architecture 
 
 This guide provides a low-level exploration of Node.js internals, covering everything from the V8 engine and Libuv to the specific phases of the Event Loop and OS-level I/O.
 
