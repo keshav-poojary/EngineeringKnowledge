@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-node
+  labels:
+    app: app-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-node
+  template:
+    metadata:
+      labels:
+        app: app-node
+    spec:
+      containers:
+      - name: app-node
+        image: philippaul/node-mongo-db:04
+        env:
+         - name: MONGO_HOST
+           valueFrom:
+             configMapKeyRef:
+               name: config-data
+               key: MONGO_HOST
+         - name: MONGO_PORT
+           valueFrom:
+             configMapKeyRef:
+               name: config-data
+               key: MONGO_PORT
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-app-node
+spec:
+  selector:
+    app: app-node
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

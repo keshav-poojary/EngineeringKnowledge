@@ -1,0 +1,9 @@
+# Terraform generated files and local credentials
+.terraform/
+*.tfstate
+*.tfstate.*
+.env
+
+# Local JavaScript dependencies and build output
+node_modules/
+build/
